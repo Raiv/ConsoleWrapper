@@ -1,4 +1,6 @@
 #include "consolewrapper.h"
+#include <QTextStream>
+#include <stdio.h>
 
 ConsoleWrapper::ConsoleWrapper(QString args, QObject *parent) :
     QObject(parent),m_args(args),process(this)
@@ -22,6 +24,7 @@ void ConsoleWrapper::dataReady()
     {
         data=process.read(process.bytesAvailable());
     }
+    QTextStream(stdout) << data;
     emit out(data);
 }
 
