@@ -40,6 +40,7 @@ void  ConsoleWrapper::in(QString data)
 
 void ConsoleWrapper::terminated()
 {
+    QTextStream(stdout) << "Error launching process"+process.error();
     emit terminated();
 
 }
